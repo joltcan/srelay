@@ -1,0 +1,13 @@
+[Unit]
+Description=srelay SOCKS server
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/local/bin/srelay -s -q -p /var/run/srelay/srelay.pid
+Restart=on-failure
+User=proxy
+PIDFile=/var/run/srelay/srelay.pid
+
+[Install]
+WantedBy=multi-user.target
